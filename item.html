@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Gardening App</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            min-height: max(884px, 100dvh);
+        }
+        .main-view { display: block; }
+        .detail-view { display: none; }
+        .cart-view { display: none; }
+        .user-view { display: none; }
+        .cart-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            display: none;}
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <!-- <style>
+    body{
+    position: relative;
+width: 414px;
+height: 879px;
+
+background: #FFFFFF;}
+</style> -->
+
+</head>
+
+<body class="bg-white text-black">
+    <div class="main-view p-4" id="main-view">
+        <header class="flex justify-between items-center mb-8">
+            <button class="text-black">
+                <span class="material-icons text-3xl">arrow_back</span>
+            </button>
+            <div class="flex items-center space-x-4">
+                <button class="text-black relative" id="main-cart-button">
+                    <span class="material-icons text-3xl">shopping_cart</span>
+                    <span class="cart-badge" id="main-cart-badge">0</span>
+                </button>
+                <button class="text-black" id="main-user-button">
+                    <span class="material-icons text-3xl">person</span>
+                </button>
+            </div>
+        </header>
+        <main>
+            <h1 class="text-4xl font-bold mb-8">What are you looking for?</h1>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="category-item" data-category="plants">
+                    <img alt="A collection of potted plants on a shelf"
+                        class="rounded-lg mb-2 w-full h-auto object-cover aspect-square"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjtdu4K3cFtyqYvmCI1zwGTcxfhJkjPMII9gwaZRC2b40o1brSD_TF8FLpRiuSMbZnF3s9sB0EO_YLL6KzCKmqmQ_HkrQK4s9zA3QgFa7lCkqFkK4UkQkZdyWcXV8gmKs_jfE0n9QeS0PTngnWRhnvDSB223ymnZcY7Ia4bbA3CEgF8SrNLlGY9sTlPQKClb1Kkw3bt1PrSWTOVqqZMKOWgjDzl4DzXCM97OnIMQg20R2oFaYY40XX6xYZ5ArGWSvZOse5-wV6Zw" />
+                    <p class="text-center text-gray-700">plants</p>
+                </div>
+                <div class="category-item" data-category="fertilizers">
+                    <img alt="A person in a garden applying fertilizer"
+                        class="rounded-lg mb-2 w-full h-auto object-cover aspect-square"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY7fYvwD4HSHlHMFl2DPFpJM1SZE0xzGM60u5i2yy7z0-rQN3H40dQIow4u3vVtjrTZJXmgfpvhQFFCRgtYGpDFg_s3niAGNKCBtyPi41CqmHknGvsslF2s-VK8vMFZvoBbbQeaR981dzmRMIvp7bSecIoyyGVUX3CEbLtarTDO1nn05NbfXIOFip7-Fuym3g8Le2cDSjzDWjwc4Dqr4MpeeMv3SH6ANEBK2vk2u4aPtQFOjEtbdL2cohg4MxjFsFXgJx21tyldg" />
+                    <p class="text-center text-gray-700">fertilizers</p>
+                </div>
+                <div class="category-item" data-category="gardening-tools">
+                    <img alt="A layout of various gardening tools"
+                        class="rounded-lg mb-2 w-full h-auto object-cover aspect-square"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAU7m1iW21o7De1DXE5_S_qtTZ_f0bMgUCaD6TJU0Wf53KihQBn3bOzRijkIzDdMZrOCAqVG1ZjytCOWh1kAFGy8ck_WWBmeX6WTdr_PdgT9QILVloKAVo7IEH0TkjhosVNvxwywNhP_sgBHcl02cxWKKcqb7sw8J8OJbMXVzGkVCpxYG0PZ7MbkDqFYDFS4OX-dAKSErXpglQ6UHJlvkp8Yyh2Jybh_SDIzV0DMBSWentL5WkeQMmbTD_Ncl4Hd1w51CdA3zLnw" />
+                    <p class="text-center text-gray-700">gardening tools</p>
+                </div>
+                <div class="category-item" data-category="seeds">
+                    <img alt="A hand planting a seed in a small pot"
+                        class="rounded-lg mb-2 w-full h-auto object-cover aspect-square"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzavOyDZlbuS6qJJ3S-FxuBiOkdxPoYpdZelGCT8CGD5nwd2ssewg45vJnByZAJBeinUNDR2PIZVk25ReLsO9R-HAlhBgChSR-gRgEovmytGNUcEzBq25K2ri8QHrUUqQ6cab12BD7Z8khWZWBYsHrG92Va0tq1aJipbCaps_v6p6tdvLZzSdJb04CJmWhwr6gAC_vnR2G1EqF0S7xrkhDP1pQu4PwhDI7mBdhqp9gi9NPEgzwM-N8YmFwWfq0GNZ-pjmXW3jdTA" />
+                    <p class="text-center text-gray-700">seeds</p>
+                </div>
+                <div class="category-item" data-category="pots-grow-bags">
+                    <img alt="An assortment of terracotta pots"
+                        class="rounded-lg mb-2 w-full h-auto object-cover aspect-square"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAI50r3dBDNu3CQJRW_YejwgA2Ta4-Q3eDPBynBxmd8qKwOiTFme8B67jlSkLu402Vs7Y_y7MiH66aOw2-Urf46wa4Rowr__mGaG1qS_iTg_hE5R8peI1DdV35zvgbdv7RKKcCoBU5PqqeMEe22szLglKauBI31IBv08pRfQfUOyVl8vRLXS6wOGn1bfQ9GB62vc8m7G-NoHiTDaM1AFHU--3Yul2F99fQqXnf07d0OePWJNP3Z0dlt8MqZpZX7Fataok6j4M9Pw" />
+                    <p class="text-center text-gray-700">pots/grow bags</p>
+                </div>
+                <div class="category-item" data-category="soil">
+                    <img alt="A pair of hands holding rich soil"
+                        class="rounded-lg mb-2 w-full h-auto object-cover aspect-square"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwl-j-XQ7Hc4PhPcskuP5N7jsBtiDmekizhripX2fRDz0NAUobwNnMToKwQeQr8hSgnw5JIPEYtQOdviy_Hw5NcfB1LAoiX_KGOoe5bNnyQKtNWU-hM-6PJanc-QMbSU04GjnPQ_x7mm4LJ1zhKKcopUeFr0rsyxMQFwfB6cesozz68UMVDVBoyqWJBRkuTTsbe-FX6U6F7hS4mGwmBp5ocoJ_ofUxvDPAGb3jqaqCvy0juazobFyg9rnVYFfpzMjrvhPWhDXg5A" />
+                    <p class="text-center text-gray-700">soils</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="detail-view p-4" id="detail-view">
+        <header class="flex justify-between items-center mb-8">
+            <button class="text-black" id="back-button">
+                <span class="material-icons text-3xl">arrow_back</span>
+            </button>
+            <div class="flex items-center space-x-4">
+                <button class="text-black relative" id="detail-cart-button">
+                    <span class="material-icons text-3xl">shopping_cart</span>
+                    <span class="cart-badge" id="detail-cart-badge">0</span>
+                </button>
+                <button class="text-black" id="detail-user-button">
+                    <span class="material-icons text-3xl">person</span>
+                </button>
+            </div>
+        </header>
+        <h1 class="text-3xl font-bold mb-4" id="detail-title"></h1>
+        <div class="grid grid-cols-1 gap-4" id="detail-content">
+        </div>
+    </div>
+    <div class="cart-view p-4" id="cart-view">
+        <header class="flex justify-between items-center mb-8">
+            <button class="text-black" id="back-to-shop-button">
+                <span class="material-icons text-3xl">arrow_back</span>
+            </button>
+            <h1 class="text-3xl font-bold">My Cart</h1>
+            <div class="w-10"></div>
+        </header>
+        <div class="flex-grow overflow-y-auto" id="cart-content">
+        </div>
+        <div class="mt-auto pt-4 border-t">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-xl text-gray-600">Total:</span>
+                <span class="text-2xl font-bold" id="cart-total">$0.00</span>
+            </div>
+            <button
+                class="w-full bg-green-500 text-white py-4 rounded-full text-lg font-semibold hover:bg-green-600 transition"
+                id="checkout-button">Checkout</button>
+        </div>
+    </div>
+    <div class="user-view p-4" id="user-view">
+        <header class="flex justify-between items-center mb-8">
+            <button class="text-black" id="back-from-user-button">
+                <span class="material-icons text-3xl">arrow_back</span>
+            </button>
+            <h1 class="text-3xl font-bold">My Profile</h1>
+            <div class="w-10"></div>
+        </header>
+        <div class="flex-grow overflow-y-auto">
+            <div class="flex flex-col items-center mb-8">
+                <div class="relative">
+                    <img alt="User profile picture" class="w-24 h-24 rounded-full object-cover"
+                        src="c:\Users\Pranay\Downloads\logo2.png" />
+                    <button class="absolute bottom-0 right-0 bg-green-500 rounded-full p-1">
+                        <span class="material-icons text-white text-sm">edit</span>
+                    </button>
+                </div>
+                <h2 class="text-2xl font-bold mt-4">Pranay Gatkine</h2>
+                <p class="text-gray-500">pranaysnegatkine1020@gmail.com</p>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-gray-100 rounded-lg p-4 flex justify-between items-center cursor-pointer">
+                    <div>
+                        <h3 class="font-semibold text-gray-700">Shipping Address</h3>
+                        <p class="text-sm text-gray-600">123 nagpur , Maharashtra...</p>
+                    </div>
+                    <span class="material-icons text-gray-400">chevron_right</span>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-4 flex justify-between items-center cursor-pointer">
+                    <div>
+                        <h3 class="font-semibold text-gray-700">Payment Methods</h3>
+                        <p class="text-sm text-gray-600">Visa **** 1234</p>
+                    </div>
+                    <span class="material-icons text-gray-400">chevron_right</span>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-4 flex justify-between items-center cursor-pointer">
+                    <div>
+                        <h3 class="font-semibold text-gray-700">Order History</h3>
+                        <p class="text-sm text-gray-600">You have no past orders</p>
+                    </div>
+                    <span class="material-icons text-gray-400">chevron_right</span>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-4 flex justify-between items-center cursor-pointer">
+                    <div>
+                        <h3 class="font-semibold text-gray-700">Notifications</h3>
+                    </div>
+                    <span class="material-icons text-gray-400">chevron_right</span>
+                </div>
+            </div>
+        </div>
+        <div class="mt-auto pt-4">
+            <button class="w-full text-red-500 py-3 rounded-full text-lg font-semibold hover:bg-red-50 transition">Log
+                Out</button>
+        </div>
+    </div>
+    <script>
+        const categoryData = {
+            plants: [
+                { name: 'Monstera Deliciosa', price: 25, img: 'https://plantzone.in/wp-content/uploads/2024/09/9-1.jpg', alt: 'Monstera Deliciosa plant in a pot' },
+                { name: 'Fiddle Leaf Fig', price: 45, img: 'https://fiddleleaffigplant.com/wp-content/uploads/2020/07/Bambino-Fiddle-Leaf-Fig.jpg', alt: 'Fiddle Leaf Fig plant in a basket' },
+                { name: 'Snake Plant', price: 20, img: 'https://plantsguru.com/cdn/shop/files/Sansevieria_Trifasciata_Small_-_Snake_Plant.jpg?v=1746105034&width=1500g', alt: 'Snake plant in a white pot' },
+            ],
+            fertilizers: [
+                { name: 'All Purpose Fertilizer', price: 15, img: 'https://m.media-amazon.com/images/I/710TaBhjfCL.jpg', alt: 'Bag of all purpose fertilizer' },
+                { name: 'Orchid Fertilizer', price: 18, img: 'https://images.thdstatic.com/productImages/9824ea74-c0bd-4eb0-88e6-b6d6a1996286/svn/miracle-gro-plant-food-fertilizer-100199-64_1000.jpg', alt: 'Bottle of orchid fertilizer' },
+            ],
+            'gardening-tools': [
+                { name: 'Pruning Shears', price: 22, img: 'https://kreateworld.in/cdn/shop/products/2edd9ad4-624a-4c47-9381-ddbab69f6b6c.jpg?v=1673863811', alt: 'A pair of pruning shears' },
+                { name: 'Gardening Gloves', price: 12, img: 'https://m.media-amazon.com/images/I/81cj0rjL-SL.jpg', alt: 'A pair of gardening gloves' },
+            ],
+            seeds: [
+                { name: 'Sunflower Seeds', price: 5, img: 'https://www.amritahealthfoods.com/cdn/shop/articles/img-1677260300100.png?v=1677345526&width=1100', alt: 'Packet of sunflower seeds' },
+                { name: 'Tomato Seeds', price: 4, img: 'https://www.urbanplant.in/cdn/shop/files/Tomatocopy.webp?v=1686578634', alt: 'Packet of tomato seeds' },
+            ],
+            'pots-grow-bags': [
+                { name: 'Terracotta Pot Set', price: 30, img: 'https://gardenup.in/cdn/shop/files/HEXSMALL_3.jpg?v=1712584684&width=1946', alt: 'A set of terracotta pots' },
+                { name: 'Fabric Grow Bags', price: 25, img: 'https://casadeamor.in/cdn/shop/files/Fabric_Grow_Bag_12x6-05.jpg?v=1727673731&width=1946', alt: 'Black fabric grow bags' },
+            ],
+            soil: [
+                { name: 'Potting Mix', price: 10, img: 'https://organicbazar.net/cdn/shop/products/Ready-to-Use-Organic-Potting-Soil-Mix-10-kg.jpg?v=1694168210', alt: 'A bag of potting mix' },
+                { name: 'Orchid Bark Mix', price: 12, img: 'https://i.etsystatic.com/35489222/r/il/daa554/3952347118/il_570xN.3952347118_e7hq.jpg', alt: 'A bag of orchid bark mix' },
+            ]
+        };
+        const mainView = document.getElementById('main-view');
+        const detailView = document.getElementById('detail-view');
+        const cartView = document.getElementById('cart-view');
+        const userView = document.getElementById('user-view');
+        const detailTitle = document.getElementById('detail-title');
+        const detailContent = document.getElementById('detail-content');
+        const cartContent = document.getElementById('cart-content');
+        const cartTotalEl = document.getElementById('cart-total');
+        const backButton = document.getElementById('back-button');
+        const backToShopButton = document.getElementById('back-to-shop-button');
+        const backFromUserButton = document.getElementById('back-from-user-button');
+        const mainCartButton = document.getElementById('main-cart-button');
+        const detailCartButton = document.getElementById('detail-cart-button');
+        const mainUserButton = document.getElementById('main-user-button');
+        const detailUserButton = document.getElementById('detail-user-button');
+        const mainCartBadge = document.getElementById('main-cart-badge');
+        const detailCartBadge = document.getElementById('detail-cart-badge');
+        const checkoutButton = document.getElementById('checkout-button');
+        let cart = [];
+        function updateCartBadge() {
+            const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (cartItemCount > 0) {
+                mainCartBadge.textContent = cartItemCount;
+                detailCartBadge.textContent = cartItemCount;
+                mainCartBadge.style.display = 'flex';
+                detailCartBadge.style.display = 'flex';
+            } else {
+                mainCartBadge.style.display = 'none';
+                detailCartBadge.style.display = 'none';
+            }
+        }
+        function renderCart() {
+            cartContent.innerHTML = '';
+            let total = 0;
+            if (cart.length === 0) {
+                cartContent.innerHTML = '<p class="text-center text-gray-500 my-10">Your cart is empty.</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    const cartItemCard = `
+                    <div class="flex items-center justify-between bg-gray-100 rounded-lg p-3 mb-4">
+                        <img src="${item.img}" alt="${item.alt}" class="rounded-lg w-20 h-20 object-cover">
+                        <div class="flex-grow mx-4">
+                            <h3 class="text-md font-semibold">${item.name}</h3>
+                            <p class="text-gray-600">$${item.price.toFixed(2)}</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                           <button class="cart-quantity-btn" data-index="${index}" data-action="decrease">
+                             <span class="material-icons text-green-500">remove_circle</span>
+                           </button>
+                           <span class="font-bold text-lg">${item.quantity}</span>
+                           <button class="cart-quantity-btn" data-index="${index}" data-action="increase">
+                             <span class="material-icons text-green-500">add_circle</span>
+                           </button>
+                        </div>
+                    </div>
+                `;
+                    cartContent.innerHTML += cartItemCard;
+                    total += item.price * item.quantity;
+                });
+            }
+            cartTotalEl.textContent = `$${total.toFixed(2)}`;
+            updateCartBadge();
+            addCartQuantityListeners();
+        }
+        function addCartQuantityListeners() {
+            document.querySelectorAll('.cart-quantity-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const index = e.currentTarget.dataset.index;
+                    const action = e.currentTarget.dataset.action;
+                    if (action === 'increase') {
+                        cart[index].quantity++;
+                    } else if (action === 'decrease') {
+                        cart[index].quantity--;
+                        if (cart[index].quantity === 0) {
+                            cart.splice(index, 1);
+                        }
+                    }
+                    renderCart();
+                });
+            });
+        }
+        function addToCart(product) {
+            const existingProductIndex = cart.findIndex(item => item.name === product.name);
+            if (existingProductIndex > -1) {
+                cart[existingProductIndex].quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCartBadge();
+        }
+        document.querySelectorAll('.category-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const category = item.dataset.category;
+                const items = categoryData[category];
+                detailTitle.textContent = category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                detailContent.innerHTML = '';
+                if (items) {
+                    items.forEach(product => {
+                        const productCard = `
+                        <div class="bg-gray-100 rounded-lg p-4 flex flex-col items-center">
+                            <img src="${product.img}" alt="${product.alt}" class="rounded-lg mb-4 w-full h-48 object-cover">
+                            <h3 class="text-lg font-semibold">${product.name}</h3>
+                            <p class="text-gray-600">$${product.price.toFixed(2)}</p>
+                            <button class="add-to-cart-btn mt-4 bg-green-500 text-white py-2 px-6 rounded-full hover:bg-green-600 transition" data-name="${product.name}" data-price="${product.price}" data-img="${product.img}" data-alt="${product.alt}">Add to Cart</button>
+                        </div>
+                    `;
+                        detailContent.innerHTML += productCard;
+                    });
+                    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                        button.addEventListener('click', (e) => {
+                            const product = {
+                                name: e.target.dataset.name,
+                                price: parseFloat(e.target.dataset.price),
+                                img: e.target.dataset.img,
+                                alt: e.target.dataset.alt,
+                            };
+                            addToCart(product);
+                        });
+                    });
+                } else {
+                    detailContent.innerHTML = `<p class="text-center text-gray-500">No items found in this category.</p>`;
+                }
+                mainView.style.display = 'none';
+                detailView.style.display = 'block';
+                cartView.style.display = 'none';
+                userView.style.display = 'none';
+            });
+        });
+        function showMainView() {
+            mainView.style.display = 'block';
+            detailView.style.display = 'none';
+            cartView.style.display = 'none';
+            userView.style.display = 'none';
+        }
+        function showCartView() {
+            renderCart();
+            mainView.style.display = 'none';
+            detailView.style.display = 'none';
+            cartView.style.display = 'flex';
+            cartView.classList.add('flex-col');
+            userView.style.display = 'none';
+        }
+        function showUserView() {
+            mainView.style.display = 'none';
+            detailView.style.display = 'none';
+            cartView.style.display = 'none';
+            userView.style.display = 'flex';
+            userView.classList.add('flex-col');
+        }
+        mainCartButton.addEventListener('click', showCartView);
+        detailCartButton.addEventListener('click', showCartView);
+        mainUserButton.addEventListener('click', showUserView);
+        detailUserButton.addEventListener('click', showUserView);
+        backButton.addEventListener('click', showMainView);
+        backToShopButton.addEventListener('click', showMainView);
+        backFromUserButton.addEventListener('click', showMainView);
+        checkoutButton.addEventListener('click', () => {
+            // Here you would typically handle the checkout logic.
+            // For this example, we just clear the cart and go back to the main view.
+            cart = [];
+            updateCartBadge();
+            showMainView();
+            alert('Thank you for your purchase, Continue your shopping !');
+        });
+        updateCartBadge();
+    </script>
+
+</body>
+
+</html>

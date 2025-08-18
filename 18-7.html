@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Gardening App</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .main-content {
+            padding-bottom: 96px;
+        }
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 flex items-center justify-center min-h-screen">
+    <div class="relative w-full max-w-md bg-gray-50" id="root">
+        <main class="main-content p-6" id="main-view">
+            <header class="flex justify-between items-center mb-8">
+                <h1 class="text-3xl font-bold">Water <span class="text-green-600">Plants</span></h1>
+                <button class="text-gray-500" onclick="showSettings()">
+                    <span class="material-icons text-3xl">settings</span>
+                </button>
+            </header>
+            <div class="space-y-4">
+                <div class="bg-pink-200 rounded-2xl p-4 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <img alt="A lush green plant in a white pot" class="w-16 h-16 rounded-lg object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9ytonBWDh8Dg9ChD-lExOsH3n0i29yiK_ptRU_tBKBzbpgaGIahqDDtX4RsYq8G2qtNZ6Nxc9pA-Iozr3XaWmrEP1Lt-dk-B1-rAzcAhEKBPJpSxW117cPZd69wMjasGKAhbrEQNSdqGwFzlqusf3HNjlk3tmnY6rGv_0R5iWWZkyRRakDqyMlyaCzqKjUGwt6NN_47ioDTMtlfBMeA-sePR8TaBKA-3K21T_iXMPPLwJfY_maeymGCn_yjNMxs49egBTig6HssM" />
+                        <div>
+                            <p class="font-semibold text-gray-700">Monstera</p>
+                            <p class="text-sm text-gray-500 flex items-center"><span
+                                    class="material-icons text-sm mr-1">opacity</span>150 ml</p>
+                        </div>
+                    </div>
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <span class="material-icons text-green-500">check</span>
+                    </div>
+                </div>
+                <div class="bg-orange-200 rounded-2xl p-4 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <img alt="A bushy plant in a black pot" class="w-16 h-16 rounded-lg object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo1Vge7njlmclnUdejnxFJCfy2NfZsFAUqZEUN2pRSNXUvjFJQe85i2OPbIdlbw2Pp3EssUcTfOnzFICY8YqhxDVmnaSUVWcM2--2s0O3JXjiczB2M86cQtuFldYPk4UhPo9B-UUE80h4s1SGvLDeXWn9o9gpcFWK-NnIj4teeGrTRI7yEmSE6OgakJqRseaigsHtWn3e-Wh5_jexGk3VdMe0KiOg98oFLOWVDZ620Gfuid5r7fsKdWtr7Pou6N01a7kyLaU5tUzE" />
+                        <div>
+                            <p class="font-semibold text-gray-700">Fiddle Leaf Fig</p>
+                            <p class="text-sm text-gray-500 flex items-center"><span
+                                    class="material-icons text-sm mr-1">opacity</span>150 ml</p>
+                        </div>
+                    </div>
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <span class="material-icons text-green-500">check</span>
+                    </div>
+                </div>
+                <div class="bg-gray-200 rounded-2xl p-4 flex items-center justify-between border-2 border-red-300">
+                    <div class="flex items-center space-x-4">
+                        <img alt="A topiary tree in a terracotta pot" class="w-16 h-16 rounded-lg object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG_yps272nvrJCBrKnYfS-qocZ5IjXG49yqrB_aQNHpO6gP_TP7kqFDrAjpLCY3kRnuR2_tha3IJ-xOd0M2QyWniTuvgy8UebburQSx1-ysIx0ckkFwr4ZhA4_f3uEBT45RkAtQLDO_bSDD4z-pIBVvQVlzTgzsn_6KQnbK5R1RTv5m2Yt4wy3qKKegs6P6vTJVhxHD7UA8kmhAK2DBtsZyJ6i0ye1c0Dab-QjK7bBQTVDp_131E_OBMKeccdQh4kOaE9_KJh0LLw" />
+                        <div>
+                            <p class="font-semibold text-gray-700">Topiary</p>
+                            <p class="text-sm text-gray-500 flex items-center"><span
+                                    class="material-icons text-sm mr-1">opacity</span>150 ml</p>
+                        </div>
+                    </div>
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <span class="material-icons text-blue-400">opacity</span>
+                    </div>
+                </div>
+            </div>
+            <h2 class="text-2xl font-bold mt-8 mb-4">Wednesday, July 30 </h2>
+            <div class="space-y-4">
+                <div class="bg-gray-100 rounded-2xl p-4 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <img alt="A small grassy plant in a black pot" class="w-16 h-16 rounded-lg object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnPQi9pZGakujmORDt_1l9tCF0JEY5AeHF_x9GdqtJnYBrL8fqb12il5LEqpHjPpJQoNlJf54zx5lbY9jzbazQU0jIsBhYgp7VVrsMC_GzTjTyTCN-M9GC_cahsiChNki8pUT0pFi_BfpJZ_Fj5pWBuYT1C9RK_O4JtIVAdZPXT27ZxBlREBmxqYDMPWhWdrx0YOcbNrsnFolGhvdPIDGAU7wzJaPgqz6P92DPromW1uvnq85NNb2KYK0OmeHt2VxC96UhSh_O0r0" />
+                        <div>
+                            <p class="font-semibold text-gray-700">Snake Plant</p>
+                            <p class="text-sm text-gray-500 flex items-center"><span
+                                    class="material-icons text-sm mr-1">opacity</span>150 ml</p>
+                        </div>
+                    </div>
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <span class="material-icons text-blue-400">opacity</span>
+                    </div>
+                </div>
+            </div>
+            <button
+                class="fixed bottom-24 right-1/2 translate-x-[168px] bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg"
+                onclick="showAddPlant()">
+                <span class="material-icons text-4xl">add</span>
+            </button>
+        </main>
+        <div class="hidden absolute inset-0 bg-white p-6 z-20" id="add-plant-view">
+            <header class="flex justify-between items-center mb-8">
+                <button class="text-gray-600" onclick="hideAllViews(); showHome();"><span
+                        class="material-icons">arrow_back</span></button>
+                <h1 class="text-2xl font-bold text-center flex-1">Add New Plant</h1>
+                <div class="w-8"></div>
+            </header>
+            <form>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="plant-name">
+                        Plant Name
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none"
+                        id="plant-name" placeholder="E.g., Monstera" type="text" />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="plant-image">
+                        Plant Image
+                    </label>
+                    <div class="flex items-center justify-center w-full">
+                        <label
+                            class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
+                            for="dropzone-file">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <span class="material-icons text-gray-400 text-4xl">cloud_upload</span>
+                                <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span>
+                                    or drag and drop</p>
+                                <p class="text-xs text-gray-500">SVG, PNG, JPG (MAX. 800x400px)</p>
+                            </div>
+                            <input class="hidden" id="dropzone-file" type="file" />
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="water-amount">
+                        Water Amount (ml)
+                    </label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none"
+                        id="water-amount" placeholder="E.g., 150" type="number" />
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="watering-day">
+                        Watering Day
+                    </label>
+                    <select
+                        class="shadow border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none"
+                        id="watering-day">
+                        <option>Today</option>
+                        <option>Saturday, May 21</option>
+                        <option>Sunday, May 22</option>
+                        <option>Monday, May 23</option>
+                    </select>
+                </div>
+                <button
+                    class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg w-full focus:outline-none"
+                    type="button">
+                    Add Plant
+                </button>
+            </form>
+        </div>
+        <!-- <div class="hidden absolute inset-0 bg-white p-6 z-20" id="plant-health-view">
+            <button class="absolute top-6 left-6 text-gray-600" onclick="hideAllViews()"><span
+                    class="material-icons">arrow_back</span></button>
+            <h2 class="text-2xl font-bold text-center mt-12 mb-8">Plant Health</h2>
+            <div class="text-center text-gray-600">
+                <span class="material-icons text-6xl text-green-500 mb-4">local_florist</span>
+                <p>Monitor your plants' health, check for diseases, and get care tips to keep them thriving.</p>
+            </div>
+        </div> -->
+
+        <div class="hidden fixed inset-0 bg-white z-20 overflow-y-auto max-w-md mx-auto w-full" id="plant-health-view">
+            <!-- Mobile Top Bar -->
+            <div class="flex items-center px-4 py-3 border-b">
+                <button onclick="hideAllViews()" class="text-gray-600">
+                    <span class="material-icons">arrow_back</span>
+                </button>
+                <h2 class="text-lg font-semibold ml-3">Plant Health</h2>
+            </div>
+
+            <!-- Main Content -->
+            <div class="px-4 py-5">
+                <div class="text-center text-gray-600">
+                    <span class="material-icons text-5xl text-green-500 mb-2">local_florist</span>
+                    <p class="text-sm leading-relaxed">
+                        Monitor your plants' health, check for diseases, and get care tips to keep them thriving.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="hidden absolute inset-0 bg-white p-6 z-20" id="subscription-view">
+            <button class="absolute top-6 left-6 text-gray-600" onclick="hideAllViews()"><span
+                    class="material-icons">arrow_back</span></button>
+            <h2 class="text-2xl font-bold text-center mt-12 mb-8">Subscription</h2>
+            <div class="text-center text-gray-600">
+                <span class="material-icons text-6xl text-yellow-500 mb-4">workspace_premium</span>
+                <p>Manage your subscription, unlock premium features, and get exclusive content.</p>
+            </div>
+        </div> -->
+
+        <div class="hidden fixed inset-0 bg-white z-20 overflow-y-auto max-w-md mx-auto w-full" id="subscription-view">
+            <!-- Mobile Top Bar -->
+            <div class="flex items-center px-4 py-3 border-b">
+                <button onclick="hideAllViews()" class="text-gray-600">
+                    <span class="material-icons">arrow_back</span>
+                </button>
+                <h2 class="text-lg font-semibold ml-3">Subscription</h2>
+            </div>
+
+            <!-- Main Content -->
+            <div class="px-4 py-5">
+                <div class="text-center text-gray-600">
+                    <span class="material-icons text-5xl text-yellow-500 mb-2">workspace_premium</span>
+                    <p class="text-sm leading-relaxed">
+                        Manage your subscription, unlock premium features, and get exclusive content.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="hidden absolute inset-0 bg-white p-6 z-20" id="ecommerce-view">
+            <button class="absolute top-6 left-6 text-gray-600" onclick="hideAllViews()"><span
+                    class="material-icons">arrow_back</span></button>
+            <h2 class="text-2xl font-bold text-center mt-12 mb-8">E-commerce</h2>
+            <div class="text-center text-gray-600">
+                <span class="material-icons text-6xl text-blue-500 mb-4">shopping_cart</span>
+                <p>Shop for new plants, pots, and gardening tools from our curated selection.</p>
+            </div>
+        </div>
+        <!-- <div class="hidden absolute inset-0 bg-white p-6 z-20" id="recommendations-view">
+            <button class="absolute top-6 left-6 text-gray-600" onclick="hideAllViews()"><span
+                    class="material-icons">arrow_back</span></button>
+            <h2 class="text-2xl font-bold text-center mt-12 mb-8">Recommendations</h2>
+            <div class="text-center text-gray-600">
+                <span class="material-icons text-6xl text-purple-500 mb-4">recommend</span>
+                <p>Get personalized plant recommendations based on your preferences and location.</p>
+            </div>
+        </div> -->
+
+        <div class="hidden fixed inset-0 bg-white z-20 overflow-y-auto max-w-md mx-auto w-full"
+            id="recommendations-view">
+            <!-- Mobile Top Bar -->
+            <div class="flex items-center px-4 py-3 border-b">
+                <button onclick="hideAllViews()" class="text-gray-600">
+                    <span class="material-icons">arrow_back</span>
+                </button>
+                <h2 class="text-lg font-semibold ml-3">Recommendations</h2>
+            </div>
+
+            <!-- Main Content -->
+            <div class="px-4 py-5">
+                <div class="text-center text-gray-600">
+                    <span class="material-icons text-5xl text-purple-500 mb-2">recommend</span>
+                    <p class="text-sm leading-relaxed">
+                        Get personalized plant recommendations based on your preferences and location.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal hidden fixed inset-0 bg-black bg-opacity-50 z-30 flex items-center justify-center opacity-0"
+            id="settings-modal">
+            <div class="bg-white rounded-2xl p-6 w-11/12 max-w-sm">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold">Settings</h2>
+                    <button class="text-gray-500" onclick="hideSettings()">
+                        <span class="material-icons">close</span>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <a class="flex items-center p-3 rounded-lg hover:bg-gray-100" href="#">
+                        <span class="material-icons mr-4 text-gray-600">person</span>
+                        <span>Account</span>
+                    </a>
+                    <a class="flex items-center p-3 rounded-lg hover:bg-gray-100" href="#">
+                        <span class="material-icons mr-4 text-gray-600">notifications</span>
+                        <span>Notifications</span>
+                    </a>
+                    <a class="flex items-center p-3 rounded-lg hover:bg-gray-100" href="#">
+                        <span class="material-icons mr-4 text-gray-600">palette</span>
+                        <span>Appearance</span>
+                    </a>
+                    <a class="flex items-center p-3 rounded-lg hover:bg-gray-100" href="#">
+                        <span class="material-icons mr-4 text-gray-600">lock</span>
+                        <span>Privacy &amp; Security</span>
+                    </a>
+                    <a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-red-500" href="#">
+                        <span class="material-icons mr-4">logout</span>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal hidden fixed inset-0 bg-black z-30 flex flex-col items-center justify-center opacity-0 text-white"
+            id="scanner-modal">
+            <button class="absolute top-6 right-6 text-white z-40" onclick="hideScanner()">
+                <span class="material-icons text-4xl">close</span>
+            </button>
+            <div class="relative w-64 h-64">
+                <div class="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-white rounded-tl-lg"></div>
+                <div class="absolute top-0 right-0 w-12 h-12 border-t-4 border-r-4 border-white rounded-tr-lg"></div>
+                <div class="absolute bottom-0 left-0 w-12 h-12 border-b-4 border-l-4 border-white rounded-bl-lg"></div>
+                <div class="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-white rounded-br-lg"></div>
+            </div>
+            <p class="mt-8 text-lg">Position the plant within the frame</p>
+        </div>
+        <nav
+            class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around items-center h-24 z-10 max-w-md mx-auto">
+            <button class="flex flex-col items-center text-green-600" onclick="showHome()">
+                <span class="material-icons">home</span>
+                <span class="text-xs"></span>
+            </button>
+            <button class="flex flex-col items-center text-gray-500" onclick="showQuickAccess('plant-health-view')">
+                <span class="material-icons">spa</span>
+                <span class="text-xs"></span>
+            </button>
+            <button class="transform -translate-y-8 bg-white p-2 rounded-full border-4 border-gray-100"
+                onclick="showScanner()">
+                <div class="bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
+                    <span class="material-icons text-3xl">qr_code_scanner</span>
+                </div>
+            </button>
+
+            <button class="flex flex-col items-center text-gray-500" onclick="showQuickAccess('subscription-view')">
+                <span class="material-icons">star_outline</span>
+                <span class="text-xs"></span>
+            </button>
+            <button class="flex flex-col items-center text-gray-500" onclick="showQuickAccess('recommendations-view')">
+                <span class="material-icons">eco</span>
+                <span class="text-xs"></span>
+            </button>
+        </nav>
+    </div>
+    <script>
+        const mainView = document.getElementById('main-view');
+        const addPlantView = document.getElementById('add-plant-view');
+        const settingsModal = document.getElementById('settings-modal');
+        const scannerModal = document.getElementById('scanner-modal');
+        const quickAccessViews = {
+            'plant-health-view': document.getElementById('plant-health-view'),
+            'subscription-view': document.getElementById('subscription-view'),
+            'ecommerce-view': document.getElementById('ecommerce-view'),
+            'recommendations-view': document.getElementById('recommendations-view')
+        };
+        function hideAllViews() {
+            mainView.style.display = 'none';
+            addPlantView.classList.add('hidden');
+            Object.values(quickAccessViews).forEach(view => view.classList.add('hidden'));
+        }
+        function showHome() {
+            hideAllViews();
+            mainView.style.display = 'block';
+        }
+        function showAddPlant() {
+            hideAllViews();
+            addPlantView.classList.remove('hidden');
+        }
+        function showQuickAccess(viewId) {
+            hideAllViews();
+            if (quickAccessViews[viewId]) {
+                quickAccessViews[viewId].classList.remove('hidden');
+            }
+        }
+        function showSettings() {
+            settingsModal.classList.remove('hidden');
+            setTimeout(() => {
+                settingsModal.classList.remove('opacity-0');
+            }, 10);
+        }
+        function hideSettings() {
+            settingsModal.classList.add('opacity-0');
+            setTimeout(() => {
+                settingsModal.classList.add('hidden');
+            }, 300);
+        }
+        function showScanner() {
+            scannerModal.classList.remove('hidden');
+            setTimeout(() => {
+                scannerModal.classList.remove('opacity-0');
+            }, 10);
+        }
+        function hideScanner() {
+            scannerModal.classList.add('opacity-0');
+            setTimeout(() => {
+                scannerModal.classList.add('hidden');
+            }, 300);
+        }
+        // Initially show the main view
+        showHome();
+    </script>
+</body>
+
+</html>

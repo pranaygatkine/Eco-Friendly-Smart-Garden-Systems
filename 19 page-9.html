@@ -1,0 +1,194 @@
+<!-- <!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Plantio</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-gray-50 font-sans">
+<div class="container mx-auto p-4">
+<header class="flex justify-between items-center py-4">
+<h1 class="text-2xl font-bold text-gray-800">New on <span class="text-green-600">Plantio</span></h1>
+<button class="text-gray-600">
+<span class="material-symbols-outlined text-3xl">
+                    settings
+                </span>
+</button>
+</header>
+<main class="mt-8 flex flex-col items-center">
+<div class="w-full max-w-xs">
+<img alt="A lush green plant in a white decorative pot." class="w-full h-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiw4JxRUuTy9vko0aY6Jck4vgGsECsr3MCP3x9L8MmT1lBATL3HYyStw6U22MeMGoASRWihwEeGMR4eBAjv3HAgz_Sq97629jpV1TUEWj0-dRBVME7ZOg5cFIrNzb6GJnBlL5xbS7a_F9wXf9traq78j-Tev9pxKTMLsJ04yL10uv5ww8Cu2gQyUMijlfKZhtkeSDz69viE5Im-MdRU8ySOxLbflF8J0N4GRibRe8dzdFXcPb87mxnfy_MPPvKszptzzg1O8k5AYzr"/>
+</div>
+<div class="text-center mt-8 px-4">
+<p class="text-gray-600 leading-relaxed">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor sed tellus fusce laoreet facilisi urna imperdiet. Quis potenti ut odio auctor mollis enim scelerisque. Et, congue
+                </p>
+</div>
+<div class="mt-8 flex flex-col items-center space-y-6">
+<div class="bg-green-100 text-green-700 font-semibold py-2 px-6 rounded-full flex items-center">
+<span class="material-symbols-outlined mr-2 !text-base">
+                        opacity
+                    </span>
+                    150 ml
+                </div>
+<div class="flex flex-col items-center">
+<button class="bg-green-600 text-white w-20 h-20 rounded-full flex items-center justify-center shadow-lg hover:bg-green-700 transition-colors">
+<span class="material-symbols-outlined text-4xl">
+                            water_drop
+                        </span>
+</button>
+<span class="mt-2 text-gray-600 font-medium tracking-wider text-sm">WATER PLANT</span>
+</div>
+</div>
+</main>
+</div>
+
+</body></html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Plantio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        body {
+          min-height: max(884px, 100dvh);
+          display: flex;
+          flex-direction: column;
+        }
+        .settings-menu {
+            display: none;
+        }
+        .settings-menu.active {
+            display: block;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+
+            /* 19 */
+
+            position: relative;
+            width: 430px;
+            height: 932px;
+
+            background: #FAFAFA;
+
+
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans">
+    <div class="container mx-auto p-4 flex-grow flex flex-col">
+        <!-- <div class="container mx-auto p-4 flex flex-col justify-center items-center min-h-screen"> -->
+
+
+        <header class="flex justify-between items-center py-4 relative">
+
+            <h1 class="text-2xl font-bold text-gray-800">New on <span class="text-green-600">Plantio</span></h1>
+            <div class="relative">
+                <button class="text-gray-600" id="settings-button">
+                    <span class="material-symbols-outlined text-3xl">
+                        settings
+                    </span>
+                </button>
+                <div class="settings-menu absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10"
+                    id="settings-menu">
+
+
+                    <a class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
+                        <span class="material-symbols-outlined mr-3 !text-xl">person</span> Profile
+                    </a>
+                    <a class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
+                        <span class="material-symbols-outlined mr-3 !text-xl">notifications</span> Notifications
+                    </a>
+                    <a class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
+                        <span class="material-symbols-outlined mr-3 !text-xl">palette</span> Appearance
+                    </a>
+                    <a class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
+                        <span class="material-symbols-outlined mr-3 !text-xl">help_outline</span> Help
+                    </a>
+                    <div class="border-t border-gray-200 my-1"></div>
+                    <a class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-gray-100" href="#">
+                        <span class="material-symbols-outlined mr-3 !text-xl">logout</span> Logout
+                    </a>
+                </div>
+            </div>
+        </header>
+        <main class="mt-8 flex flex-col items-center flex-grow justify-center">
+            <div class="w-full max-w-xs">
+                <img alt="A lush green plant in a white decorative pot." class="w-full h-auto"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiw4JxRUuTy9vko0aY6Jck4vgGsECsr3MCP3x9L8MmT1lBATL3HYyStw6U22MeMGoASRWihwEeGMR4eBAjv3HAgz_Sq97629jpV1TUEWj0-dRBVME7ZOg5cFIrNzb6GJnBlL5xbS7a_F9wXf9traq78j-Tev9pxKTMLsJ04yL10uv5ww8Cu2gQyUMijlfKZhtkeSDz69viE5Im-MdRU8ySOxLbflF8J0N4GRibRe8dzdFXcPb87mxnfy_MPPvKszptzzg1O8k5AYzr" />
+            </div>
+            <div class="text-center mt-8 px-4">
+                <p class="text-gray-600 leading-relaxed">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor sed tellus fusce laoreet facilisi
+                    urna imperdiet. Quis potenti ut odio auctor mollis enim scelerisque. Et, congue
+                </p>
+            </div>
+            <div class="mt-8 flex flex-col items-center space-y-6">
+                <div class="bg-green-100 text-green-700 font-semibold py-2 px-6 rounded-full flex items-center">
+                    <span class="material-symbols-outlined mr-2 !text-base">
+                        opacity
+                    </span>
+                    150 ml
+                </div>
+                <div class="flex flex-col items-center">
+                    <button
+                        class="bg-green-600 text-white w-20 h-20 rounded-full flex items-center justify-center shadow-lg hover:bg-green-700 transition-colors">
+                        <span class="material-symbols-outlined text-4xl">
+                            water_drop
+                        </span>
+                    </button>
+                    <span class="mt-2 text-gray-600 font-medium tracking-wider text-sm">WATER PLANT</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        const settingsButton = document.getElementById('settings-button');
+        const settingsMenu = document.getElementById('settings-menu');
+        settingsButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            settingsMenu.classList.toggle('active');
+        });
+        document.addEventListener('click', (event) => {
+            if (!settingsMenu.contains(event.target) && !settingsButton.contains(event.target)) {
+                settingsMenu.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
